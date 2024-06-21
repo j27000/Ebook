@@ -1,8 +1,24 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ProductCard } from "../../components/Elements/ProductCard"
 import { FilterBar } from "./components/FilterBar"
 export const ProductsList = () => {
   const [show, setshow] = useState(false);
+  const [task, settask] = useState([]);
+  useEffect(() => {
+    async function found() {
+      const data = await fetch("http://localhost:8000/products");
+      const response = await data.json();
+      console.log(response);
+      settask(response);
+
+    }
+    found();
+
+
+  }, [])
+
+
+
   return (
     <main>
       <section className="my-5">
@@ -16,11 +32,15 @@ export const ProductsList = () => {
         </div>
 
         <div className="flex flex-wrap justify-center lg:flex-row">
-          <ProductCard />
+          {task.map((pro) => (
+            <ProductCard key={pro.id} product={pro} />
+
+          ))
+          }
 
         </div>
       </section>
-      {show && <FilterBar  setshow ={setshow} /> }
+      {show && <FilterBar setshow={setshow} />}
     </main>
   )
 }
