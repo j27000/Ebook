@@ -1,5 +1,3 @@
-
-
 export const Stars = ({ id, rating }) => {
     let arr = new Array(5).fill(0);
     for (let index = 0; index < rating; index++) {
