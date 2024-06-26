@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom"
 import logo from "../../assets/logo.png"
+import { Search } from "../Sections/Search"
+import { useState } from "react"
+import { DropdownLoggedOut } from "../Elements/DropdownLoggedOut"
 
 export const Header = () => {
+    const [set, notset] = useState(false);
+    const [drop, notdrop] = useState(false);
     return (
         <header>
             <nav className="bg-white dark:bg-gray-900">
@@ -12,15 +17,17 @@ export const Header = () => {
                     </Link>
                     <div className="flex items-center relative">
                         <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-wide-connected"></span>
-                        <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"></span>
+                        <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search" onClick={() => (notset(!set))}></span>
                         <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
                             <span className="text-2xl bi bi-cart-fill relative">
                                 <span className="text-white text-sm absolute -top-1 left-2.5 bg-rose-500 px-1 rounded-full ">0</span>
                             </span>
                         </Link>
-                        <span className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
+                        <span onClick={() => (notdrop(!drop))} className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
+                        {drop ? <DropdownLoggedOut notdrop={notdrop} /> : null}
                     </div>
                 </div>
+                {set ? <Search notset={notset} /> : null}
             </nav>
         </header>
     )
