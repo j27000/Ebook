@@ -3,10 +3,15 @@ import logo from "../../assets/logo.png"
 import { Search } from "../Sections/Search"
 import { useState } from "react"
 import { DropdownLoggedOut } from "../Elements/DropdownLoggedOut"
+import { DropdownLoggedIn } from "../Elements/DropdownLoggedIn"
+import { useCart } from "../../Context/CartContext"
+
 
 export const Header = () => {
     const [set, notset] = useState(false);
     const [drop, notdrop] = useState(false);
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    const { CartList } = useCart();
     return (
         <header>
             <nav className="bg-white dark:bg-gray-900">
@@ -18,13 +23,13 @@ export const Header = () => {
                     <div className="flex items-center relative">
                         <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-wide-connected"></span>
                         <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search" onClick={() => (notset(!set))}></span>
-                        <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
+                        <Link to="/Cart" className="text-gray-700 dark:text-white mr-5">
                             <span className="text-2xl bi bi-cart-fill relative">
-                                <span className="text-white text-sm absolute -top-1 left-2.5 bg-rose-500 px-1 rounded-full ">0</span>
+                                <span className="text-white text-sm absolute -top-1 left-2.5 bg-rose-500 px-1 rounded-full ">{CartList.length}</span>
                             </span>
                         </Link>
                         <span onClick={() => (notdrop(!drop))} className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
-                        {drop ? <DropdownLoggedOut notdrop={notdrop} /> : null}
+                        {drop && (token ? <DropdownLoggedIn /> : <DropdownLoggedOut />)}
                     </div>
                 </div>
                 {set ? <Search notset={notset} /> : null}
