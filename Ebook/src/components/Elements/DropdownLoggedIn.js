@@ -16,7 +16,7 @@ export const DropdownLoggedIn = () => {
                     <Link to="/Products" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All eBooks</Link>
                 </li>
                 <li>
-                    <Link href="/" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</Link>
+                    <Link to="/DashboardPage" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</Link>
                 </li>
             </ul>
             <div className="py-1">
