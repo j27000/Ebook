@@ -20,9 +20,9 @@ export const FeaturedProducts = () => {
     <section className="my-20">
       <h1 className="text-2xl text-center font-semibold text-black-100 mb-5 underline underline-offset-8">Featured eBooks</h1>
       <div className="flex flex-wrap justify-center lg:flex-row">
-        {task.map((pro) => (
+        {task.map((product) => (
 
-          <ProductCard key={pro.id} product ={pro} />
+          <ProductCard key={product.id} product ={product} />
         ))}
       </div>
     </section>
