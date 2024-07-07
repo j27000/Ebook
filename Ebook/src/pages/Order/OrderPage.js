@@ -7,6 +7,7 @@ export const OrderPage = () => {
   const { state } = useLocation();
   return (
     <div>
+      //as
       {state ? <OrderSuccess /> : < OrderFail />}
 
     </div>
