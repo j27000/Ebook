@@ -112,5 +112,6 @@ export const Checkout = () => {
             </div>
 
         </section>
+        //
     )
 }
