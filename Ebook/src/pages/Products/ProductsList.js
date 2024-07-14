@@ -12,7 +12,7 @@ export const ProductsList = () => {
   const { productList, intialproducts } = useFilter();
   useEffect(() => {
     async function found() {
-      // foundingf
+    
       const encodedSearchTerm = encodeURIComponent(searchTerm || "");
       const data = await fetch(`http://localhost:8000/products?name_like=${encodedSearchTerm}`);
       const response = await data.json();
