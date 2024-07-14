@@ -15,8 +15,8 @@ export const ProductsList = () => {
       const encodedSearchTerm = encodeURIComponent(searchTerm || "");
       const data = await fetch(`http://localhost:8000/products?name_like=${encodedSearchTerm}`);
       const response = await data.json();
-      console.log(response);
-      intialproducts(response);
+      // console.log(response);
+      // intialproducts(response);
 
     }
     found();
